@@ -9,6 +9,7 @@ module.exports = {
 	},
 	output: {
 		filename: '[name].js',
+		publicPath: "/",
 		path: path.resolve(__dirname,'public')
 	},
 	module: {
@@ -34,7 +35,6 @@ module.exports = {
 		]
 	},
 	devServer: {
-		port: 3000,
 		historyApiFallback: true,
 	},
 	plugins: [
