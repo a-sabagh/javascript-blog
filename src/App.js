@@ -2,7 +2,15 @@ import Router from './Router'
 
 export default class {
 
-	#state
+	#state = {
+		action: 'home',
+		posts: [
+			{ id: 0, title: "Hello World", body: "Lorem velit veritatis beatae in? Praesentium repellat magni molestiae dolorem laborum officiis sapiente consequuntur! Sequi dolores eligendi?" },
+			{ id: 1, title: "PHP Strings", body: "Adipisicing quisquam beatae ea optio distinctio pariatur. Vero quia quia" },
+			{ id: 0, title: "Array Data Structure", body: "Dolor ratione maiores nam quasi impedit odio rerum aut! Reiciendis quidem modi." },
+			{ id: 0, title: "Functions and Prosedure", body: "Consectetur voluptatum amet sint quisquam animi? Accusamus error" },
+		]
+	}
 	#router
 	#stateEvent
 	
@@ -18,7 +26,6 @@ export default class {
 			},
 			
 		},this)
-		this.#state = new Object
 		this.#stateEvent = new Event('onstatechange')
 	}
 
