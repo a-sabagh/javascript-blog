@@ -1,20 +1,23 @@
 import Router from './Router'
+import Home from './Components/Home/Home.js'
+import Post from './Components/Post/Post.js'
 
 export default class {
 
 	#state = {
 		action: 'home',
 		posts: [
-			{ id: 0, title: "Hello World", body: "Lorem velit veritatis beatae inmagni molestiae dolorem laborum officiis sapiente consequuntur! Sequi dolores eligendi?" },
-			{ id: 1, title: "PHP Strings", body: "Adipisicing quisquam beatae ea inmagni optio distinctio pariatur. Vero quia quia" },
-			{ id: 2, title: "Array Data Structure", body: "Dolor ratione maiores nam quasi impedit odio rerum inmagniaut! Reiciendis quidem modi." },
-			{ id: 3, title: "Functions and Prosedure", body: "Consectetur voluptatum amet sint quisquam animi? Accusamus error" },
+			{ id: 1, title: "Hello World", body: "Lorem velit veritatis beatae inmagni molestiae dolorem laborum officiis sapiente consequuntur! Sequi dolores eligendi?" },
+			{ id: 2, title: "PHP Strings", body: "Adipisicing quisquam beatae ea inmagni optio distinctio pariatur. Vero quia quia" },
+			{ id: 3, title: "Array Data Structure", body: "Dolor ratione maiores nam quasi impedit odio rerum inmagniaut! Reiciendis quidem modi." },
+			{ id: 4, title: "Functions and Prosedure", body: "Consectetur voluptatum amet sint quisquam animi? Accusamus error" },
 		]
 	}
 	#router
 	#stateEvent
+	#appElement
 	
-	constructor(){
+	constructor(appId){
 		this.#router = new Router({
 			"^\/post\/(\\d+)$" : {
 				title: "Personal Blog | Single",
@@ -26,6 +29,7 @@ export default class {
 			},
 			
 		},this)
+		this.#appElement = window.document.getElementById(appId)
 		this.#stateEvent = new Event('onstatechange')
 	}
 
@@ -40,13 +44,17 @@ export default class {
 	}
 
 	home(matches){
-		alert('home')
-		console.log(matches)
+		let posts = this.getState('posts')
+		return Home(posts)
 	}
 
 	post(matches){
-		alert(`post with id ${matches[1]}`)
-		console.log(matches)
+		let id = matches[1]
+		let posts = this.getState('posts')
+		let post = posts.find((post) => {
+			return post.id == id
+		})
+		return Post(post)
 	}
 
 	404(matches){
@@ -56,7 +64,7 @@ export default class {
 
 	route(){
 		let action = this.getState('action')
-		this.#router.init(action)
+		this.#appElement.innerHTML = this.#router.init(action)
 	}
 
 }
