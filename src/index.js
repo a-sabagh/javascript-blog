@@ -9,7 +9,6 @@ window.onload = (event) => {
 		oldState['action'] = state
 		return oldState
 	})
-	app.route()
 }
 
 window.navigate = (event) => {
@@ -21,5 +20,15 @@ window.navigate = (event) => {
 		oldState['action'] = state
 		return oldState
 	})
-	app.route()
 }
+
+window.document.addEventListener("onstatechange", function(event){
+	app.route()
+});
+
+/*********** Redirect Structure ***********
+app.setState((oldState) => {
+	window.history.pushState({},'','/home')
+	oldState['action'] = '/home'
+	return oldState
+})*/
