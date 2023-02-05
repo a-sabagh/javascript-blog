@@ -76,6 +76,7 @@ export default class {
 			oldState['posts'] = oldPosts
 			return oldState
 		})
+		event.target.reset()
 	}
 
 	new(matches){
@@ -85,7 +86,6 @@ export default class {
 
 	404(matches){
 		alert('404')
-		console.log('404 Not Found')
 	}
 
 	route(){

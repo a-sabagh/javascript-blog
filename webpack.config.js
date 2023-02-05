@@ -41,7 +41,8 @@ module.exports = {
 		new MiniCssExtractPlugin(),
 		new HtmlWebpackPlugin({
 			template: './src/index.html',
-			title: 'Prosenal Blog'
+			title: 'Prosenal Blog',
+			favicon: './src/favicon.png',
 		})
 	]
 }
