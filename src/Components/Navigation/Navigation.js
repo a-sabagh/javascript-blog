@@ -20,7 +20,7 @@ export default (action) => {
 		item['class'] = (action == item.href)? 'active' : ''
 		output += `
 			<li>
-				<a href="${item.href}" class="${item.class}" title="${item.title}">${item.title}</a>
+				<a href="${item.href}" class="${item.class}" title="${item.title}" onclick="navigate(event)">${item.title}</a>
 			</li>
 		`
 	})

@@ -9,8 +9,17 @@ window.onload = (event) => {
 		oldState['action'] = state
 		return oldState
 	})
-	console.log(app.getState('action'))
 	app.route()
 }
 
-
+window.navigate = (event) => {
+	event.preventDefault()
+	let target = event.target
+	let state = new URL(target.href).pathname
+	window.history.pushState({},'',state)
+	app.setState((oldState) => {
+		oldState['action'] = state
+		return oldState
+	})
+	app.route()
+}

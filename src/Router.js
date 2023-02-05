@@ -6,7 +6,6 @@ export default class {
 	}
 
 	init(path){
-		console.log(path)
 		for(let regString in this.mapApi){
 			let regex = new RegExp(regString)
 			let matches = path.match(regex)

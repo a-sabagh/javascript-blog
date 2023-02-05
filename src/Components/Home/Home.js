@@ -8,7 +8,7 @@ export default (posts,action) => {
 	output += `
 		<div class="post-item">
 			<h1>
-				<a href="/post/${post.id}" title="${post.title}" >${post.title}</a>
+				<a href="/post/${post.id}" title="${post.title}" onclick="navigate(event)">${post.title}</a>
 			</h1>
 			<p>${post.body}</p>
 		</div>
