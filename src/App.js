@@ -1,6 +1,7 @@
 import Router from './Router'
 import Home from './Components/Home/Home.js'
 import Post from './Components/Post/Post.js'
+import New from './Components/New/New.js'
 
 export default class {
 
@@ -26,6 +27,10 @@ export default class {
 			"^\/(home)?$" : {
 				title: "Personal Blog | Home",
 				action: "home",
+			},
+			"^\/new$" : {
+				title: "Personal Blog | Add Post",
+				action: "new",
 			},
 		},this)
 		this.#appElement = window.document.getElementById(appId)
@@ -54,6 +59,28 @@ export default class {
 			return post.id == id
 		})
 		return Post(post,this.getState('action'))
+	}
+
+	newPost(event){
+		event.preventDefault()
+		let fd = new FormData(event.target)
+		let oldPosts = this.getState('posts')
+		let id = oldPosts.length
+		let post = {
+			id: id,
+			title: fd.get('title'),
+			body: fd.get('body'),
+		}
+		oldPosts.push(post) 
+		this.setState((oldState) => {
+			oldState['posts'] = oldPosts
+			return oldState
+		})
+	}
+
+	new(matches){
+		let action = this.getState('action')
+		return New(this,action)
 	}
 
 	404(matches){
