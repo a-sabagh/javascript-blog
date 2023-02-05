@@ -27,7 +27,6 @@ export default class {
 				title: "Personal Blog | Home",
 				action: "home",
 			},
-			
 		},this)
 		this.#appElement = window.document.getElementById(appId)
 		this.#stateEvent = new Event('onstatechange')
@@ -45,7 +44,7 @@ export default class {
 
 	home(matches){
 		let posts = this.getState('posts')
-		return Home(posts)
+		return Home(posts,this.getState('action'))
 	}
 
 	post(matches){
@@ -54,7 +53,7 @@ export default class {
 		let post = posts.find((post) => {
 			return post.id == id
 		})
-		return Post(post)
+		return Post(post,this.getState('action'))
 	}
 
 	404(matches){

@@ -1,7 +1,9 @@
 import Post from '../Post/Post.js'
+import Navigation from '../Navigation/Navigation.js'
+import Footer from '../Footer/Footer.js'
 
-export default (posts) => {
-	let output = new String
+export default (posts,action) => {
+	let output = Navigation(action)
 	posts.forEach((post,index) => {
 	output += `
 		<div class="post-item">
@@ -12,5 +14,6 @@ export default (posts) => {
 		</div>
 	`
 	})
+	output += Footer()
 	return output
 }

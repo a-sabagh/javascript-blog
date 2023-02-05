@@ -9,6 +9,7 @@ window.onload = (event) => {
 		oldState['action'] = state
 		return oldState
 	})
+	console.log(app.getState('action'))
 	app.route()
 }
 
