@@ -1,3 +1,5 @@
+import Navigation from './Navigation.css'
+
 export default (action) => {
 	let output = new String
 	let items = [

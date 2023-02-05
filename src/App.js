@@ -80,7 +80,7 @@ export default class {
 
 	new(matches){
 		let action = this.getState('action')
-		return New(this,action)
+		return New(action)
 	}
 
 	404(matches){

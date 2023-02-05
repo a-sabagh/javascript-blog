@@ -1,3 +1,5 @@
+import style from './Footer.css'
+
 export default () => {
 	return `
 		<footer>
